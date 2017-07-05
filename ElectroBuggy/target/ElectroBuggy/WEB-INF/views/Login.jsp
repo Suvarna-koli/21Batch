@@ -55,7 +55,7 @@ img.avatar {
 
 	<h2>Login Form</h2>
 
-	<form action="login" method="post">
+	<form action="perform_login" method="post">
 		<div class="imgcontainer">
 			<img
 				src="resources/img/User.jpg"
@@ -63,10 +63,10 @@ img.avatar {
 		</div>
 
 		<div class="container">
-			<label><b>Username</b></label> <span class="glyphicons glyphicons-user"></span><input type="text"
+			<label><span class="glyphicons glyphicons-user"></span><b>Username</b></label><input type="text"
 				placeholder="Enter Username" name="uname" required><br>
 
-			<label><b>Password</b></label> <input type="password"
+			<label><span class="glyphicons glyphicons-lock"></span><b>Password</b></label> <input type="password"
 				placeholder="Enter Password" name="passwd" required><br>
 
 			<button type="submit" value="SUBMIT">Login</button>

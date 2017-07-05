@@ -23,8 +23,8 @@
     	</ul>
 
 	  <div class="nav navbar-nav navbar-right">
-		<a href="Login">Log In</a>
-		<a href="Registration">Sign Up</a>
+		<a href="Login"><span class="glyphicons glyphicons-log-in"></span>Log In</a>&nbsp;
+		<a href="Registration">Sign Up</a>&nbsp;
 	
 		<a href="Home">Back to Home</a>
 	

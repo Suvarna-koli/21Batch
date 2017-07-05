@@ -10,8 +10,7 @@
 <jsp:include page="NavbarAdmin.jsp"></jsp:include>
  
 <body background="resources/img/bg2.jpg">
-<h2>Welcome to Admin page..!!</h2>
-
+<h2><center>Welcome to Admin page..!!</center></h2>
 </body>
 
 <jsp:include page="Footer.jsp"></jsp:include>

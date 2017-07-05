@@ -24,10 +24,10 @@ button {
 	width: auto;
 }
 
-button:hover {
+/* button:hover {
 	opacity: 0.8;
 }
-
+ */
 .cancelbtn {
 	width: auto;
 	padding: 10px 18px;
@@ -35,7 +35,7 @@ button:hover {
 }
 
 .imgcontainer {
-	text-align: center;
+	text-align: left;
 	margin: 24px 0 12px 0;
 }
 
@@ -53,9 +53,11 @@ img.avatar {
  
 <body>
 
-	<h2>Login Form</h2>
 
-	<form action="login" method="post">
+	<h2><center>Login Form</center></h2>
+
+	<form action="perform_login" method="post">
+	 <!-- <form action="login" method="post">  -->
 		<div class="imgcontainer">
 			<img
 				src="resources/img/User.jpg"
@@ -63,10 +65,10 @@ img.avatar {
 		</div>
 
 		<div class="container">
-			<label><b>Username</b></label> <span class="glyphicons glyphicons-user"></span><input type="text"
+			<label><span class="glyphicons glyphicons-user"></span><b>Username</b></label><input type="text"
 				placeholder="Enter Username" name="uname" required><br>
 
-			<label><b>Password</b></label> <input type="password"
+			<label><span class="glyphicons glyphicons-lock"></span><b>Password</b></label> <input type="password"
 				placeholder="Enter Password" name="passwd" required><br>
 
 			<button type="submit" value="SUBMIT">Login</button>

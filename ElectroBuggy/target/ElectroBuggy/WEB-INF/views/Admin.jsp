@@ -7,13 +7,10 @@
 <title>Insert title here</title>
 </head>
  
-<jsp:include page="Navbar.jsp"></jsp:include>
+<jsp:include page="NavbarAdmin.jsp"></jsp:include>
  
-<body>
-<h2>Welcome to Admin page..!!</h2>
-<a href="Category">Category</a>&nbsp;&nbsp;
-<a href="Product">Product</a>&nbsp;&nbsp;
-
+<body background="resources/img/bg2.jpg">
+<h2><center>Welcome to Admin page..!!</center></h2>
 </body>
 
 <jsp:include page="Footer.jsp"></jsp:include>

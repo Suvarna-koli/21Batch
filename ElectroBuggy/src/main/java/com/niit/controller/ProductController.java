@@ -1,21 +1,25 @@
 package com.niit.controller;
+import java.io.BufferedOutputStream;
+
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.mobitel.Mobitel.BackEnd.dao.CategoryDAO;
-import com.mobitel.Mobitel.BackEnd.dao.ProductDAO;
-import com.mobitel.Mobitel.BackEnd.dao.SupplierDAO;
-import com.mobitel.Mobitel.BackEnd.model.Category;
-import com.mobitel.Mobitel.BackEnd.model.Product;
-import com.mobitel.Mobitel.BackEnd.model.Supplier;
+import com.mobitel.Mobitel.BackEnd.dao.*;
+import com.mobitel.Mobitel.BackEnd.model.*;
 
 @Controller
 public class ProductController 
@@ -28,9 +32,10 @@ public class ProductController
 	
 	@Autowired
 	SupplierDAO supplierDAO;
+
 	
 	
-	@RequestMapping("/Product")
+	@RequestMapping(value="/Product")
 	public String showProduct(Model m)
 	{
 		
@@ -45,21 +50,62 @@ public class ProductController
 		List<Product> prodlist=productDAO.getProductDetails();
 		m.addAttribute("prodlist",prodlist);
 		
+		boolean flag=false;
+		m.addAttribute("flag",flag);
+		
 		
 		return "Product";
 	}
-	
-	@RequestMapping(value="/InsertProduct",method=RequestMethod.POST)
-	public String insertProduct(@ModelAttribute("product") Product product,Model m)
-	{
-		System.out.println("---Product Inserted---");
-		productDAO.insertUpdateProduct(product);	
 		
+	@RequestMapping(value="/AddProduct")
+	public String insertProduct(@ModelAttribute("product") Product product,Model m,
+			@RequestParam("pimg") MultipartFile filedet,BindingResult result)
+	{
+		
+	System.out.println("Image uploading...");
+		String path="F:\\ShriniwasBatch\\ElectroBuggy\\src\\main\\webapp\\resources\\productImg\\";
+		
+		String idpath=productDAO.getProdcutId()+".jpg";
+		String fileinfo=path+idpath;
+		System.out.println("---Product Inserted---");
+		
+		File f=new File(fileinfo);
+		if(!filedet.isEmpty())
+		{
+			try {
+
+				byte buff[]=filedet.getBytes();
+				FileOutputStream fos=new FileOutputStream(f);
+				BufferedOutputStream bs=new BufferedOutputStream(fos);
+				bs.write(buff);
+			bs.close();
+			fos.close();
+			String imgpath="resources/productImg/"+idpath;
+			product.setImgpath(imgpath);
+			productDAO.insertUpdateProduct(product);
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+			
+		
+		else
+		{
+			System.out.println("File is empty...please a select the file");
+		}
 		List<Product> prodlist=productDAO.getProductDetails();
 		m.addAttribute("prodlist",prodlist);
 		
-		return "Product";
+		boolean flag=false;
+		m.addAttribute("flag",flag);
+		
+		return "redirect:/Product";
 	}
+	
+		
+	
+	
 	
 	@RequestMapping(value="/updateProduct/{prodid}")
 	public String updateProduct(@PathVariable("prodid")int prodid,Model m)
@@ -72,8 +118,30 @@ public class ProductController
 		
 		List<Product> prodlist=productDAO.getProductDetails();
 		m.addAttribute("prodlist",prodlist);
+		boolean flag=true;
+		m.addAttribute("flag",flag);
+		
 		
 		return "redirect:/Product";
+	}
+	@RequestMapping(value="/UpdateProduct",method=RequestMethod.POST)
+	public String updateProduct(@RequestParam("proid") int proid,@RequestParam("proname") String proname,@RequestParam("prodesc") String prodesc,Model m)
+	{
+		System.out.println("--Updating the Product----");
+
+		Product product=new Product();
+		product.setProid(proid);
+	product.setProname(proname);
+	product.setProdesc(prodesc);
+		productDAO.insertUpdateProduct(product);
+		
+		List<Product> list=productDAO.getProductDetails();
+		m.addAttribute("prodetail",list);
+		
+		boolean flag=false;
+		m.addAttribute("flag",flag);
+		
+		return "Product";
 	}
 	
 	@RequestMapping(value="/deleteProduct/{prodid}")
@@ -90,6 +158,9 @@ public class ProductController
 		m.addAttribute("suplist",this.getSupList());
 		List<Product> prodlist=productDAO.getProductDetails();
 		m.addAttribute("prodlist",prodlist);
+		boolean flag=false;
+		m.addAttribute("flag",flag);
+		
 		
 		return "Product";
 	}

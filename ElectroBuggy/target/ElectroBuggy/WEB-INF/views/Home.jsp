@@ -15,10 +15,11 @@
   }
   </style>
   
+ <center> <h2 style="background-color:"">Welcome To Shopping Cart</h2></center>
+
 <jsp:include page="Navbar.jsp"></jsp:include>
- <center> <h2>Welcome To Shopping Cart</h2></center>
 </head>
-<body>
+<body background="resources/img/bg2.jpg">
 
 <div class="container">
   <br>
@@ -27,6 +28,7 @@
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
  
     </ol>
 
@@ -42,6 +44,13 @@
 
       <div class="item">
         <img src="resources/img/watch2.jpg" alt="secondslide" width="460" height="345">
+        <div class="carousel-caption">
+         
+        </div>
+      </div>
+      
+      <div class="item">
+        <img src="resources/img/watch3.jpg" alt="thirdslide" width="460" height="345">
         <div class="carousel-caption">
          
         </div>

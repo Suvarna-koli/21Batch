@@ -14,21 +14,19 @@
 	<div class="container-fluid">
 	
 	<div class="navbar-header">
-      	<a class="navbar-brand" href="#">E-Kart</a>
+      	<a class="navbar-brand" href="">E-Kart</a>
     	</div>	
 	 <ul class="nav navbar-nav">
       		<li class="active"><a href="Home">Home</a></li>
-      		<li><a href="#">AboutUs</a></li>
+      		<li><a href="AboutUs">AboutUs</a></li>
       		<li><a href="ContactUs">ContactUs</a></li>
     	</ul>
 
-	  <div class="nav navbar-nav navbar-right">
-		<a href="Login">Log In</a>
-		<a href="Registration">Sign Up</a>
-	
-		<a href="Home">Back to Home</a>
-	
-	  </div>
+	  <ul class="nav navbar-nav navbar-right">
+		<li><a href="Login"><span class="glyphicons glyphicons-log-in"></span>Log In</a></li>
+		<li><a href="Registration">Sign Up</a></li>
+		<li><a href="Home">Back to Home</a></li>	
+	  </ul>
 
 	</div>
 </nav>

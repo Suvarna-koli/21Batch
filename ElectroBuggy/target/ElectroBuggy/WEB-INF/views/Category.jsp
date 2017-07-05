@@ -3,18 +3,24 @@
   <link rel="stylesheet" href="resources/css/bootstrap.min.css">
  <script src="resources/js/bootstrap.min.js"></script>
  <script src="resources/js/jquery.min.js"></script>
+ 
  <jsp:include page="Navbar.jsp"></jsp:include>
  
 <h2><center>Manage Category</center></h2>
+
 <!-- Category Form Started -->
+<body background="resources/img/bg1.jpg">
 <c:if test="${flag}">
-	<form action="UpdateCategory" method="post">
+	<form action="${pageContext.request.contextPath}/UpdateCategory" method="post">
 </c:if>
 <c:if test="${!flag}">
 
 <form action="AddCategory" method="post">
-</c:if>
 
+</c:if>
+<%
+String contextPath = request.getContextPath();
+%>
 	<table align="center" cellspacing="2">
 		<tr>
 			<td colspan="2">Category Details</td>
@@ -47,33 +53,42 @@
 </form>
 <!-- Category Form Completed -->
 
-<div class="container">
 <!-- Displaying the Category data using Table -->
-<table cellspacing="2" align="center" border="1">
 
-	<tr bgcolor="blue">
-		<td>Category ID</td>
-		<td>Category Name</td>
-		<td>Category Desc</td>
-		<td>Update</td>
-		<td>Delete</td>
+<div class="container">
+ <!-- <div class="wrapper">
+       <img src="resources/img/bg.jpg" class="img-responsive" alt="Responsive image">
+        
+  </div> -->
+	<div class="row">        
+        <div class="col-md-12">
+        <div class="table-responsive">
+
+              <table id="categoryTable" class="table table-bordered">
+
+	<tr bgcolor="">
+		<td><b>Category ID</b></td>
+		<td><b>Category Name</b></td>
+		<td><b>Category Desc</b></td>
+		<td><b></b></td>
 	</tr>
 	<c:forEach items="${catdetail}" var="category">
 		<tr>
 			<td>${category.catid}</td>
 			<td>${category.catname}</td>
 			<td>${category.catdesc}</td>
-		<%-- 	<td><a href="<c:url value="deleteCategory/${category.catid}"/>"><span class="glyphicon glyphicon-trash"></span></a>
-				<a href="<c:url value="updateCategory/${category.catid}"/>"><span class="glyphicon glyphicon-pencil"></span></a>
+			<td><a href="<c:url value="deleteCategory/${category.catid}"/>">Delete</a></td>
+				<td><a href="<c:url value="updateCategory/${category.catid}"/>">Edit</a>
 			</td>
-		 --%>
-		 <td><a href="<c:url value="updateCategory/${category.catid}"/>"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" value=""><span class="glyphicon glyphicon-pencil">Edit</span></button></a></td>
-    <td><a href="<c:url value="deleteCategory/${category.catid}"/>"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></td>
-    
+		
     </tr>
 	</c:forEach>
 </table>
 </div>
+</div>
+</div>
+</div>
+
 <!-- Completed Displaying Table -->
 
 </body>

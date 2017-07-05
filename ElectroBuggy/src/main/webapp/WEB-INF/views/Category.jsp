@@ -4,21 +4,23 @@
  <script src="resources/js/bootstrap.min.js"></script>
  <script src="resources/js/jquery.min.js"></script>
  
- <jsp:include page="Navbar.jsp"></jsp:include>
+ <jsp:include page="NavbarAdmin.jsp"></jsp:include>
  
 <h2><center>Manage Category</center></h2>
 
 <!-- Category Form Started -->
 <body background="resources/img/bg1.jpg">
 <c:if test="${flag}">
-	<form action="UpdateCategory" method="post">
+	<form action="${pageContext.request.contextPath}/UpdateCategory" method="post">
 </c:if>
 <c:if test="${!flag}">
 
 <form action="AddCategory" method="post">
 
 </c:if>
-
+<%
+String contextPath = request.getContextPath();
+%>
 	<table align="center" cellspacing="2">
 		<tr>
 			<td colspan="2">Category Details</td>
@@ -64,20 +66,19 @@
 
               <table id="categoryTable" class="table table-bordered">
 
-	<tr bgcolor="cyan">
-		<td>Category ID</td>
-		<td>Category Name</td>
-		<td>Category Desc</td>
-		<td>Delete</td>
-		<td>Update</td>
+	<tr bgcolor="">
+		<td><b>Category ID</b></td>
+		<td><b>Category Name</b></td>
+		<td><b>Category Desc</b></td>
+		<td><b></b></td>
 	</tr>
 	<c:forEach items="${catdetail}" var="category">
 		<tr>
 			<td>${category.catid}</td>
 			<td>${category.catname}</td>
 			<td>${category.catdesc}</td>
-			<td><a href="<c:url value="deleteCategory/${category.catid}"/>"><span class="glyphicon glyphicon-trash"></span>Delete</a></td>
-				<td><a href="<c:url value="updateCategory/${category.catid}"/>"><span class="glyphicon glyphicon-pencil"></span>Edit</a>
+			<td><a href="<c:url value="deleteCategory/${category.catid}"/>">Delete</a></td>
+				<td><a href="<c:url value="updateCategory/${category.catid}"/>">Edit</a>
 			</td>
 		
     </tr>

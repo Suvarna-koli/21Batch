@@ -21,7 +21,11 @@ public class HomeController {
 		return "Login";
 	}
 	
-	
+
+	@RequestMapping("/Success")
+	public String GotoLoginSuccessPage() {
+		return "Success";
+	}
 
 	@RequestMapping("/ContactUs")
 	public String GotoContactPage() {

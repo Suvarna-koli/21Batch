@@ -55,7 +55,7 @@ button {
 
 <h2>Signup Form</h2>
 
-<form action="user" style="border:1px solid #ccc" method="POST">
+<form action="SignUp" style="border:1px solid #ccc" method="POST">
   <div class="container">
 
     <label><b>User Name</b></label>
@@ -69,9 +69,6 @@ button {
     <label><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="Upswd" required>
     
-    <label><b>Role</b></label>
-    <input type="text" placeholder="Enter Role" name="Role" required>
-    
     <label><b>Address</b></label>
     <input type="text" placeholder="Enter Address" name="Addr" required>
     
@@ -81,7 +78,7 @@ button {
     <input type="checkbox" checked="checked"> Remember me
     <div class="clearfix">
       <button type="button" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn" value="user">Sign Up</button>
+      <button type="submit" class="signupbtn">SignUp</button>
     
     
   </div>
