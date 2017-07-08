@@ -1,0 +1,5 @@
+com\mobitel\Mobitel\BackEnd\CartTestCase.class
+com\mobitel\Mobitel\BackEnd\CategoryTestCase.class
+com\mobitel\Mobitel\BackEnd\UserTestCase.class
+com\mobitel\Mobitel\BackEnd\ProductTestCase.class
+com\mobitel\Mobitel\BackEnd\SupplierTestCase.class

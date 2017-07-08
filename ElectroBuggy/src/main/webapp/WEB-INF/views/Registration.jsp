@@ -59,7 +59,7 @@ button {
   <div class="container">
 
     <label><b>User Name</b></label>
-    <input type="text" placeholder="Enter User Name" name="uname" required>
+    <input type="text" placeholder="Enter User Name" name="username" required>
     <label><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
 
@@ -67,7 +67,7 @@ button {
     <input type="text" placeholder="Enter customer name" name="CustName" required>
     
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="Upswd" required>
+    <input type="password" placeholder="Enter Password" name="password" required>
     
     <label><b>Address</b></label>
     <input type="text" placeholder="Enter Address" name="Addr" required>

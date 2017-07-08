@@ -17,19 +17,15 @@ public class LoginController {
 	@Autowired
 	UserDAO userDAO;
 
-/*	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String gotoLogin(@RequestParam("uname") String uname, @RequestParam("passwd") String passwd, Model m) {
+	/*@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String gotoLogin(@RequestParam("username") String username, @RequestParam("password") String password, Model m) {
 
 		List<User> list = userDAO.getUserDetails(); //
 		m.addAttribute("userdetail", list);
 		for (User user : list) {
-			if (user.getUname().equals(uname) && user.getUpswd().equals(passwd)) {
-				if (user.getRole().equals("Role_Admin")) {
-					return "Admin";
-				} else {
-					return "Admin";
-				}
-			}
+			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+					return "User";
+				} 
 
 		}
 		return "Home";

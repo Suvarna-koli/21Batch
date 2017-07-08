@@ -21,14 +21,14 @@ public class SupplierTestCase
 		SupplierDAO supplierDAO=(SupplierDAO)context.getBean("supplierDAO");
 		
 		//Insertion TestCase
-		/*
+		
 		Supplier supplier=new Supplier();
 		
-		supplier.setSupname("SBK Supplier");
-		supplier.setSupaddr("Pune");
+		supplier.setSupname("Shridhar Supplier");
+		supplier.setSupaddr("Nagpur");
 		supplierDAO.insertUpdateSupplier(supplier);		
 		System.out.println("Supplier Inserted");
-		*/
+		
 		//Retrieval TestCase
 		
 	/*	Supplier supplier=supplierDAO.getSupplier(2);

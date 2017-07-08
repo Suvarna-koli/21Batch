@@ -18,15 +18,25 @@ public class ProductTestCase {
 		ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
 
 		// Insertion TestCase
-		/*
+		
 		Product product = new Product();
 
-		product.setProname("Casio Edifice");
-		product.setProdesc("Casio Edifice for Men's watch");
+		product.setProname("Omega SA");
+		product.setProdesc("Omega SA Men's Large Dual Dial Analog Digital Quartz lectronic Sport Watch");
 		product.setPrice(2399);
-		product.setQuantity(1);
-	product.setSid(1);
-		product.setCid(1);
+		product.setQuantity(25);
+	product.setSupid(1);
+		product.setCatid(1);
+		productDAO.insertUpdateProduct(product);
+		System.out.println("Product Inserted");
+
+
+/*		product.setProname("Apson");
+		product.setProdesc("Aposon Men's Large Dual Dial Analog Digital Quartz lectronic Sport Watch");
+		product.setPrice(2399);
+		product.setQuantity(25);
+	product.setSupid(2);
+		product.setCatid(2);
 		productDAO.insertUpdateProduct(product);
 		System.out.println("Product Inserted");
 */
@@ -55,10 +65,10 @@ public class ProductTestCase {
 		 */
 		// Update the Product
 		
-		  Product product=productDAO.getProduct(3);
+	/*	  Product product=productDAO.getProduct(3);
 		  product.setProname("Casio Edifice");
 		  productDAO.insertUpdateProduct(product);
 		  System.out.println("The Product Updated");
-		 
+	*/	 
 	}
 }

@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
 <head>
 <title> Navbar Example </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- Starting the Navbar Code -->
+Starting the Navbar Code
 
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
@@ -37,7 +37,7 @@
 	</div>
 </nav>
 
-<!-- Ending the NavBar Code -->
+Ending the NavBar Code
 
 </body>
 </html>
@@ -49,3 +49,4 @@
 
 
 
+ -->

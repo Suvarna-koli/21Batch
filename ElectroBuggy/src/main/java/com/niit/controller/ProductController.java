@@ -1,7 +1,5 @@
 package com.niit.controller;
 import java.io.BufferedOutputStream;
-
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.LinkedHashMap;
@@ -18,8 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mobitel.Mobitel.BackEnd.dao.*;
-import com.mobitel.Mobitel.BackEnd.model.*;
+import com.mobitel.Mobitel.BackEnd.dao.CategoryDAO;
+import com.mobitel.Mobitel.BackEnd.dao.ProductDAO;
+import com.mobitel.Mobitel.BackEnd.dao.SupplierDAO;
+import com.mobitel.Mobitel.BackEnd.model.Category;
+import com.mobitel.Mobitel.BackEnd.model.Product;
+import com.mobitel.Mobitel.BackEnd.model.Supplier;
 
 @Controller
 public class ProductController 
@@ -191,6 +193,21 @@ public class ProductController
 		}
 		
 		return suplist;
+	}
+	
+	@RequestMapping(value="/ProductPage")
+	public String gotoDisplayPage(Model m)
+	{
+		List<Product> prolist=productDAO.getProductDetails();
+		m.addAttribute("prolist",prolist);
+		return "ProductPage";
+	}
+	@RequestMapping(value="/ProDescription/{proid}")
+	public String gotoDescriptionPage(@PathVariable("proid")int proid,Model m)
+	{
+		Product product=productDAO.getProduct(proid);
+		m.addAttribute("proInfo", product);
+		return "ProDescription";
 	}
 	
 	

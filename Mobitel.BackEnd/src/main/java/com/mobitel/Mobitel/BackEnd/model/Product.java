@@ -1,28 +1,49 @@
 package com.mobitel.Mobitel.BackEnd.model;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table
 @Entity
-public class Product {
+public class Product<MultipartFile>  {
+	
+	
 	@Id
 	@GeneratedValue
 	int proid;
-	int cid,sid,price,quantity;
-	public int getCid() {
-		return cid;
+	int catid,supid,price,quantity;
+	String proname,prodesc,imgpath;
+	
+	public String getImgpath() {
+		return imgpath;
 	}
-	public void setCid(int cid) {
-		this.cid = cid;
+	public void setImgpath(String imgpath) {
+		this.imgpath = imgpath;
 	}
-	public int getSid() {
-		return sid;
+	@Transient
+	 MultipartFile pimg;
+	public MultipartFile getPimg() {
+		return pimg;
 	}
-	public void setSid(int sid) {
-		this.sid = sid;
+	public void setPimg(MultipartFile pimg) {
+		this.pimg = pimg;
+	}
+	public int getCatid() {
+		return catid;
+	}
+	public void setCatid(int catid) {
+		this.catid = catid;
+	}
+	public int getSupid() {
+		return supid;
+	}
+	public void setSupid(int supid) {
+		this.supid = supid;
 	}
 	public int getProid() {
 		return proid;
@@ -54,5 +75,4 @@ public class Product {
 	public void setProdesc(String prodesc) {
 		this.prodesc = prodesc;
 	}
-	String proname,prodesc;
 }

@@ -2,6 +2,7 @@ package com.mobitel.Mobitel.BackEnd.config;
 
 import java.util.Properties;
 
+
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
@@ -14,14 +15,11 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.mobitel.Mobitel.BackEnd.dao.CategoryDAO;
-import com.mobitel.Mobitel.BackEnd.dao.ProductDAO;
-import com.mobitel.Mobitel.BackEnd.dao.SupplierDAO;
-import com.mobitel.Mobitel.BackEnd.dao.UserDAO;
-import com.mobitel.Mobitel.BackEnd.model.Category;
 import com.mobitel.Mobitel.BackEnd.model.Product;
-import com.mobitel.Mobitel.BackEnd.model.Supplier;
-import com.mobitel.Mobitel.BackEnd.model.User;
+import com.mobitel.Mobitel.BackEnd.dao.*;
+import com.mobitel.Mobitel.BackEnd.model.*;
+
+
 
 @Configuration
 @ComponentScan("com.mobitel.Mobitel.BackEnd")
@@ -58,10 +56,11 @@ public class DBConfig
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(getH2DataSource());
 		sessionBuilder.addProperties(prop);
 		System.out.println("---Factory Builder Object Created---");
-		/*sessionBuilder.addAnnotatedClass(Category.class);
-		*/sessionBuilder.addAnnotatedClass(Supplier.class);
+		sessionBuilder.addAnnotatedClass(Category.class);
+		sessionBuilder.addAnnotatedClass(Supplier.class);
 		sessionBuilder.addAnnotatedClass(User.class);
 		sessionBuilder.addAnnotatedClass(Product.class);
+		sessionBuilder.addAnnotatedClass(Cart.class);
 		
 		System.out.println("Session Factory Object Creation");
 		SessionFactory sessionFactory=sessionBuilder.buildSessionFactory();
@@ -77,7 +76,7 @@ public class DBConfig
 		HibernateTransactionManager transactionManager=new HibernateTransactionManager(sessionFactory);
 		System.out.println("--Transaction manager Object Created--");
 		return transactionManager;
-	}/*
+	}
 	@Autowired
 	@Bean(name="categoryDAO")
 	public CategoryDAO getCategoryDAO(SessionFactory sessionFactory)
@@ -85,7 +84,7 @@ public class DBConfig
 		System.out.println("-- CategoryDAO Object Creation--");
 		return new CategoryDAO(sessionFactory);
 	}
-	*/@Autowired
+	@Autowired
 	@Bean(name="supplierDAO")
 	public SupplierDAO getSupplierDAO(SessionFactory sessionFactory)
 	{
@@ -107,6 +106,13 @@ public class DBConfig
 	{
 		System.out.println("-- ProductDAO Object Creation--");
 		return new ProductDAO(sessionFactory);
+	}
+	@Autowired
+	@Bean(name="cartDAO")
+	public CartDAO getCartDAO(SessionFactory sessionFactory)
+	{
+		System.out.println("-- cartDAO Object Creation--");
+		return new CartDAO(sessionFactory);
 	}
 
 }

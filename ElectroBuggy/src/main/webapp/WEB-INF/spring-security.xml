@@ -9,8 +9,7 @@
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/security/spring-tx-4.2.xsd">
 
-
-	<security:http auto-config="true" use-expressions="true">
+<security:http auto-config="true" use-expressions="true">
 <!-- 		<security:intercept-url pattern="/ProductPage"
 			access="hasRole('Role_User')"/>
 		<security:intercept-url pattern="/Admin"
@@ -28,16 +27,14 @@
 
 	<authentication-manager>
 		<authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource"
-		  users-by-username-query=
-		    "select uname,Upswd, enabled from User where uname=?"
-		  authorities-by-username-query=                                                
-		    "select uname, Role from User where uname=?"/>
-		   <!--  <user-service>
-		    <user name="Radha" password="12345" authorities="Role_User"/>
+			<security:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select username,password,enabled from User where username=?"
+				authorities-by-username-query="select username, role from User where username =?" />
+		    <!-- <user-service>
+		    <user name="radha" password="12345" authorities="ROLE_USER"/>
 		    <user name="suvarna" password="suvarna" authorities="Role_Admin"/>
-		    </user-service>
-		    --> </authentication-provider>
+		    </user-service> -->
+		    </authentication-provider>
 	</authentication-manager>
 	</beans:beans>
 	

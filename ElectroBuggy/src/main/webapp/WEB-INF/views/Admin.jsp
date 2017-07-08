@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
  
-<jsp:include page="NavbarAdmin.jsp"></jsp:include>
+<jsp:include page="Navbar.jsp"></jsp:include>
  
 <body background="resources/img/bg2.jpg">
 <h2><center>Welcome to Admin page..!!</center></h2>

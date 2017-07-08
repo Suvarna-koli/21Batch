@@ -1,33 +1,45 @@
 package com.mobitel.Mobitel.BackEnd.model;
 
 import javax.persistence.Entity;
+
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table
 public class User {
+
+	@Id
+	String username;
 	
-	String Uname;
-	boolean Enabled;
-	public String getRole() {
-		return Role;
-	}
-	public void setRole(String role) {
-		Role = role;
-	}
-	String email,CustName,Upswd,Role,Mobile,Addr;
-	public String getUname() {
-		return Uname;
-	}
-	public void setUname(String uname) {
-		Uname = uname;
-	}
+	boolean enabled;
+	String email,CustName,password,role,Mobile,Addr;
+
 	public boolean isEnabled() {
-		return Enabled;
+		return enabled;
 	}
 	public void setEnabled(boolean enabled) {
-		Enabled = enabled;
+		this.enabled = enabled;
 	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -38,25 +50,20 @@ public class User {
 		return CustName;
 	}
 	public void setCustName(String custName) {
-		CustName = custName;
+		this.CustName = custName;
 	}
-	public String getUpswd() {
-		return Upswd;
-	}
-	public void setUpswd(String upswd) {
-		Upswd = upswd;
-	}
+	
 	public String getMobile() {
 		return Mobile;
 	}
 	public void setMobile(String mobile) {
-		Mobile = mobile;
+		this.Mobile = mobile;
 	}
 	public String getAddr() {
 		return Addr;
 	}
 	public void setAddr(String addr) {
-		Addr = addr;
+		this.Addr = addr;
 	}
 	
 	

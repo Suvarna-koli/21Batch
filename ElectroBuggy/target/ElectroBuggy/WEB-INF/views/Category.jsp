@@ -4,7 +4,7 @@
  <script src="resources/js/bootstrap.min.js"></script>
  <script src="resources/js/jquery.min.js"></script>
  
- <jsp:include page="Navbar.jsp"></jsp:include>
+ <jsp:include page="NavbarAdmin.jsp"></jsp:include>
  
 <h2><center>Manage Category</center></h2>
 
