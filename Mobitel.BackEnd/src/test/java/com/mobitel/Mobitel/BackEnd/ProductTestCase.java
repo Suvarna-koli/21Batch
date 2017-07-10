@@ -21,10 +21,12 @@ public class ProductTestCase {
 		
 		Product product = new Product();
 
-		product.setProname("Omega SA");
-		product.setProdesc("Omega SA Men's Large Dual Dial Analog Digital Quartz lectronic Sport Watch");
-		product.setPrice(2399);
-		product.setQuantity(25);
+		product.setProname("Fastrack NG9463AL07");
+		product.setProdesc("Water Resistant (50 m),"
+				+ "Display Type: Analog,"
+				+ "Strap: Blue, Canvas and leather");
+		product.setPrice(1635);
+		product.setQuantity(2);
 	product.setSupid(1);
 		product.setCatid(1);
 		productDAO.insertUpdateProduct(product);

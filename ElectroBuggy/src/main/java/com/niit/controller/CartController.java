@@ -3,6 +3,7 @@ package com.niit.controller;
 import java.util.List;
 
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,11 @@ public class CartController {
 	ProductDAO productDAO;
 	
 	@RequestMapping("/Cart")
-	public String ShowCartPage(Model m) {
-		//List<Cart> list = cartDAO.getCartItems(username);
-		//m.addAttribute("list", list);
+	public String ShowCartPage(Model m,HttpSession session) {
+		String username=(String)session.getAttribute("username");
+		
+		List<Cart> list = cartDAO.getCartItems(username);
+		m.addAttribute("cartlist", list);
 		return "Cart";
 	}
 	@RequestMapping(value="/addToCart/{proid}",method=RequestMethod.GET)
@@ -51,4 +54,54 @@ public class CartController {
 		return "Cart";
 	}
 
+@RequestMapping(value="/update/{cartItemid}")
+public String updateCart(@PathVariable("cartItemid") int cartItemid,@RequestParam("quantity") int quantity,HttpSession session,Model m)
+{
+	
+	Cart cart=(Cart)cartDAO.getCartItem(cartItemid);
+	
+	cart.setQuantity(quantity);
+	cartDAO.addToCart(cart);
+	
+String username=(String) session.getAttribute("username");
+	
+	List<Cart> list=cartDAO.getCartDetails(username);
+	m.addAttribute("cartlist",list);
+	
+	
+	
+	return "Cart";
+	
+	}
+
+
+
+
+@RequestMapping(value="/delete/{cartItemid}")
+public String deleteCart(@PathVariable("cartItemid") int cartItemid,HttpSession session,Model m)
+{
+
+	
+	Cart cart=(Cart)cartDAO.getCartItem(cartItemid);
+	
+	cartDAO.deleteCartItem(cart);
+	
+String username=(String) session.getAttribute("username");
+	
+	List<Cart> list=cartDAO.getCartDetails(username);
+	m.addAttribute("cartlist",list);
+	
+	
+	
+	return "Cart";
+	
 }
+
+
+
+
+
+
+}
+
+

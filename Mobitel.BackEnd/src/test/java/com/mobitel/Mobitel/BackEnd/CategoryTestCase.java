@@ -24,8 +24,8 @@ public class CategoryTestCase
 		
 		Category category=new Category();
 		
-		category.setCatname("Rolex");
-		category.setCatdesc("Rolex Model with high quality ");
+		category.setCatname("Kid's Wrist Watch");
+		category.setCatdesc("In this Category we provide Kid's Digital Sports Watch,Quartz Analog Roman Numeral Watch Waterproof,Casual Fashion Wristwatch,Stainless Steel Case watch etc.");
 
 		categoryDAO.insertUpdateCategory(category);		
 		System.out.println("Category Inserted");

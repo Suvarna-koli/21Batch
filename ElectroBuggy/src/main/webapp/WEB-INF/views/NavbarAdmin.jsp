@@ -1,43 +1,57 @@
-<!-- <html>
+<%@ page language="java" contentType="text/html"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%><html>
 <head>
-<title> Navbar Example </title>
+<title>Navbar Example</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
- <script src="resources/js/bootstrap.min.js"></script>
- <script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/jquery.min.js"></script>
 </head>
 <body>
 
-Starting the Navbar Code
+	<c:if test="${sessionScope.loggedIn}">
 
-<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-	
-	<div class="navbar-header">
-      	<a class="navbar-brand" href="#">E-Kart</a>
-    	</div>	
-	 <ul class="nav navbar-nav">
-      		<li class="active"><a href="Home">Home</a></li>
-      		<li><a href="#">AboutUs</a></li>
-      		<li><a href="ContactUs">ContactUs</a></li>
-     		<li><a href="Category">Category</a></li>
-      		<li><a href="Product">Product</a></li>
- <li><a href="Supplier">Supplier</a></li>
-    	</ul>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">E-Kart</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="Admin">Admin</a></li>
+
+					<li><a href="Category">Category</a></li>
+					<li><a href="Product">Product</a></li>
+					<li><a href="Supplier">Supplier</a></li>
+				</ul>
 
 
-	  <div class="nav navbar-nav navbar-right">
-		<a href="Login">Log In</a>
-		<a href="Registration">Sign Up</a>
-	
-		<a href="Home">Back to Home</a>
-	
-	  </div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">${sessionScope.username}</a></li>
 
-	</div>
-</nav>
+					<li><a href="Login">Log Out</a></li>
+				</ul>
+			</div>
 
-Ending the NavBar Code
+		</nav>
+	</c:if>
+
+	<c:if test="${!sessionScope.loggedIn}">
+
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+
+				<ul class="nav navbar-nav nav navbar-right">
+					<li><a href="Admin">Adminhome</a></li>
+					<li><a href="Product">Product</a></li>
+					<li><a href="Supplier">Supplier</a></li>
+					<li><a href="Category">Category</a></li>
+
+				</ul>
+			</div>
+		</nav>
+	</c:if>
 
 </body>
 </html>
@@ -49,4 +63,3 @@ Ending the NavBar Code
 
 
 
- -->

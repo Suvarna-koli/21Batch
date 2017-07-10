@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-  <link rel="stylesheet" href="resources/css/bootstrap.min.css">
- <script src="resources/js/bootstrap.min.js"></script>
- <script src="resources/js/jquery.min.js"></script>
- 
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/jquery.min.js"></script>
+
  <jsp:include page="NavbarAdmin.jsp"></jsp:include>
  
 <h2><center>Manage Supplier</center></h2>
 
 <!-- Category Form Started -->
-<body background="resources/img/bg1.jpg">
+<body background="resources/img/bge1.jpg">
 <c:if test="${flag}">
-	<form action="${pageContext.request.contextPath}/UpdateSupplier" method="post">
+	<form action="${pageContext.request.contextPath}/UpdateSupplier" method="post"></form>
 </c:if>
 <c:if test="${!flag}">
 
 <form action="AddSupplier" method="post">
-
+</form>
 </c:if>
 <%
 String contextPath = request.getContextPath();
@@ -50,7 +51,6 @@ String contextPath = request.getContextPath();
 			<td colspan="2"><input type="submit" value="AddSupplier" /></td>
 		</tr>
 	</table>
-</form>
 <!-- Supplier Form Completed -->
 
 <!-- Displaying the Supplier data using Table -->
@@ -66,14 +66,14 @@ String contextPath = request.getContextPath();
 
               <table id="SupplierTable" class="table table-bordered">
 
-	<tr bgcolor="">
+	<tr bgcolor="#FFFACD">
 		<td><b>Supplier ID</b></td>
 		<td><b>Supplier Name</b></td>
 		<td><b>Supplier Desc</b></td>
-		<td><b></b></td>
+		<td colspan="2"><b>Operation</b></td>
 	</tr>
 	<c:forEach items="${supdetail}" var="supplier">
-		<tr>
+		<tr bgcolor="#FFFFF0">
 			<td>${supplier.supid}</td>
 			<td>${supplier.supname}</td>
 			<td>${supplier.supaddr}</td>

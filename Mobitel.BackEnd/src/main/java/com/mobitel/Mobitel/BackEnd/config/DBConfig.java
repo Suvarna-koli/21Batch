@@ -61,6 +61,7 @@ public class DBConfig
 		sessionBuilder.addAnnotatedClass(User.class);
 		sessionBuilder.addAnnotatedClass(Product.class);
 		sessionBuilder.addAnnotatedClass(Cart.class);
+		sessionBuilder.addAnnotatedClass(Order1.class);
 		
 		System.out.println("Session Factory Object Creation");
 		SessionFactory sessionFactory=sessionBuilder.buildSessionFactory();
@@ -113,6 +114,13 @@ public class DBConfig
 	{
 		System.out.println("-- cartDAO Object Creation--");
 		return new CartDAO(sessionFactory);
+	}
+	@Autowired
+	@Bean(name="orderDAO")
+	public OrderDAO getOrderDAO(SessionFactory sessionFactory)
+	{
+		System.out.println("-- orderDAO Object Creation--");
+		return new OrderDAO(sessionFactory);
 	}
 
 }

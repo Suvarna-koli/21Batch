@@ -11,7 +11,7 @@
 	<center>Manage Product</center>
 </h2>
 
-<body background="resources/img/bg1.jpg">
+<body background="resources/img/bge1.jpg">
 	<c:if test="${flag}">
 		<form action="${pageContext.request.contextPath}/UpdateProduct"
 			method="post">${pageContext.request.contextPath}</form>
@@ -20,17 +20,6 @@
 		enctype="multipart/form-data">
 
 		<table align="center">
-			<%-- <tr>
-				<td colspan="2">
-				Product Id</td>
-				<td><c:if test="${!flag}">
-					<form:input path="proid" /></td>
-				</c:if>
-				<c:if test="${flag}">
-					<td><form:hidden path="proid" value="${product.proid}" />
-				</c:if>
-				</td>
-			</tr> --%>
 			<tr>
 				<td>Product Name</td>
 				<c:if test="${flag}">
@@ -51,7 +40,7 @@
 					</c:if> <c:if test="${flag}">
 						<form:select path="catid" value="${product.catid}" />
 					</c:if></td>
-				</td>
+				
 			</tr>
 			<tr>
 
@@ -115,7 +104,7 @@
 
 					<table id="productTable" class="table table-bordered">
 
-						<tr bgcolor="">
+						<tr bgcolor="#FFFACD">
 							<td><b>Product ID</b></td>
 							<td><b>Product Name</b></td>
 							<td><b>Price</b></td>
@@ -127,7 +116,7 @@
 
 						</tr>
 						<c:forEach items="${prodlist}" var="product">
-							<tr bgcolor="">
+							<tr bgcolor="#FFFFF0">
 								<td>${product.proid}</td>
 								<td>${product.proname}</td>
 								<td>${product.price}</td>

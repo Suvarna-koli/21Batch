@@ -4,16 +4,16 @@
  <script src="resources/js/bootstrap.min.js"></script>
  <script src="resources/js/jquery.min.js"></script>
  
- <jsp:include page="Navbar.jsp"></jsp:include>
+ <jsp:include page="NavbarUser.jsp"></jsp:include>
  
 <body background="resources/img/bg2.jpg">
 
 	<h2>
 		<center>Welcome to User page..!!</center>
 	</h2>
-		<c:forEach items="${categorylist}" var="category">
+		<c:forEach items="${catdetail}" var="category">
 
-					<a href="CategoryWise/${category.catid }">${category.catname}</a>
+					<a href="CategoryWise/${category.catid}">${category.catname}</a>
 </c:forEach>
 	<div class="container">
 		<div class="row">

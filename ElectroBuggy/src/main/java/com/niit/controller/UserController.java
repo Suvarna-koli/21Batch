@@ -1,7 +1,6 @@
 package com.niit.controller;
 
 import java.util.Collection;
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,9 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.mobitel.Mobitel.BackEnd.dao.*;
-import com.mobitel.Mobitel.BackEnd.model.*;
+import com.mobitel.Mobitel.BackEnd.dao.CategoryDAO;
+import com.mobitel.Mobitel.BackEnd.dao.ProductDAO;
+import com.mobitel.Mobitel.BackEnd.dao.UserDAO;
+import com.mobitel.Mobitel.BackEnd.model.Category;
+import com.mobitel.Mobitel.BackEnd.model.Product;
+import com.mobitel.Mobitel.BackEnd.model.User;
 
 @Controller
 public class UserController {
@@ -41,9 +45,9 @@ public class UserController {
 	@RequestMapping("/login_success")
 	public String loginsuccess(HttpSession session,Model m) {
 		System.out.println("loded successfully");
-
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		boolean loggedIn = true;
+		
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		session.setAttribute("username", username);
 		session.setAttribute("loggedIn", loggedIn);
 		System.out.println(username);
@@ -57,8 +61,9 @@ public class UserController {
 
 				return "Admin";
 			} else {
-				List<Category> list = categoryDAO.getCategoryDetails();
-				m.addAttribute("categorylist", list);
+				Product<MultipartFile> product=new Product<MultipartFile>();
+				List<Product> prolist=productDAO.getProductDetails();
+				m.addAttribute("prolist",prolist);
 				return "User";
 			}
 		}

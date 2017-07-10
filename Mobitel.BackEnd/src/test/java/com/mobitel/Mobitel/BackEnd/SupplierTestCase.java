@@ -24,8 +24,8 @@ public class SupplierTestCase
 		
 		Supplier supplier=new Supplier();
 		
-		supplier.setSupname("Shridhar Supplier");
-		supplier.setSupaddr("Nagpur");
+		supplier.setSupname("Anglo Swiss Watch Co,Kolkata");
+		supplier.setSupaddr("Binoy Badal Dinesh Bagh East,Kolkata");
 		supplierDAO.insertUpdateSupplier(supplier);		
 		System.out.println("Supplier Inserted");
 		

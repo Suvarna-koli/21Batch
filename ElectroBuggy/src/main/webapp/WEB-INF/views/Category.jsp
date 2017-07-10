@@ -9,27 +9,27 @@
 <h2><center>Manage Category</center></h2>
 
 <!-- Category Form Started -->
-<body background="resources/img/bg1.jpg">
+<body background="resources/img/bge1.jpg">
 <c:if test="${flag}">
-	<form action="${pageContext.request.contextPath}/UpdateCategory" method="post">
+	<form action="${pageContext.request.contextPath}/UpdateCategory" method="post"></form>
 </c:if>
 <c:if test="${!flag}">
 
 <form action="AddCategory" method="post">
-
+</form>
 </c:if>
 <%
 String contextPath = request.getContextPath();
 %>
 	<table align="center" cellspacing="2">
 		<tr>
-			<td colspan="2">Category Details</td>
+			<td colspan="2"><b>Category Details</b></td>
 			<c:if test="${flag}">
 			<input type="hidden" name="catid" value="${category.catid}"/>
 			</c:if>
 		</tr>
 		<tr>
-			<td>Category Name</td>
+			<td><b>Category Name</b></td>
 			<c:if test="${flag}">
 				<td><input type="text" name="catname" value="${category.catname}" /></td><br>
 			</c:if>
@@ -38,7 +38,7 @@ String contextPath = request.getContextPath();
 			</c:if>
 		</tr>
 		<tr>
-			<td>Category Description</td>
+			<td><b>Category Description</b></td>
 			<c:if test="${flag}">
 				<td><input type="text" name="catdesc" value="${category.catdesc}" /></td>
 			</c:if>
@@ -50,7 +50,7 @@ String contextPath = request.getContextPath();
 			<td colspan="2"><input type="submit" value="AddCategory" /></td>
 		</tr>
 	</table>
-</form>
+
 <!-- Category Form Completed -->
 
 <!-- Displaying the Category data using Table -->
@@ -66,14 +66,14 @@ String contextPath = request.getContextPath();
 
               <table id="categoryTable" class="table table-bordered">
 
-	<tr bgcolor="">
+	<tr bgcolor="#FFFACD">
 		<td><b>Category ID</b></td>
 		<td><b>Category Name</b></td>
 		<td><b>Category Desc</b></td>
-		<td><b></b></td>
+		<td colspan="2"><b>Operation</b></td>
 	</tr>
 	<c:forEach items="${catdetail}" var="category">
-		<tr>
+		<tr bgcolor="#FFFFF0">
 			<td>${category.catid}</td>
 			<td>${category.catname}</td>
 			<td>${category.catdesc}</td>

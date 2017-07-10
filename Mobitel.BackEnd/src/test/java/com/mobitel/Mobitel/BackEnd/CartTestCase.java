@@ -23,13 +23,16 @@ public class CartTestCase {
 		
 		Cart cart = new Cart();
 
+		
 		cart.setCartid(1001);
 		cart.setProid(2);
-		cart.setProname("M5 Apson");
-		cart.setPrice(1200);
-		cart.setQuantity(5);
+		cart.setProname("Fastrack NG9463AL07");
+		cart.setPrice(1635);
+		cart.setQuantity(2);
 		cart.setStatus("N");
-		cart.setUsername("Radha");
+		cart.setUsername("radha");
+
+		
 		cartDAO.addToCart(cart);
 		System.out.println("Added to cart");
 	

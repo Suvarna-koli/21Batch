@@ -61,20 +61,21 @@ button {
     <label><b>User Name</b></label>
     <input type="text" placeholder="Enter User Name" name="username" required>
     <label><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="text" placeholder="Enter Email" name="email" onchange="email_validate(this.value);" required>
 
     <label><b>Customer Name</b></label>
     <input type="text" placeholder="Enter customer name" name="CustName" required>
     
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+    <input type="password" placeholder="Enter Password" name="password" class="form-control inputpass" minlength="4" maxlength="10"  onkeyup="checkPass();" required>
     
     <label><b>Address</b></label>
     <input type="text" placeholder="Enter Address" name="Addr" required>
-    
+       <div class="form-group">
     <label><b>Mobile</b></label>
-    <input type="text" placeholder="Enter Mobile Number" name="Mobile" required>
-    
+    <input type="text" placeholder="Enter Mobile Number" name="Mobile" class="form-control Mobile" maxlength="10" onkeyup="validatephone(this);" required>
+                    
+    </div>
     <input type="checkbox" checked="checked"> Remember me
     <div class="clearfix">
       <button type="button" class="cancelbtn">Cancel</button>

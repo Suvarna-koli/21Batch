@@ -15,7 +15,7 @@
 			<div class="col-md-12">
 				<c:forEach items="${prolist}" var="product">
 
-					<a href="ProDescription/${product.proid }" class="Thumbnail"> <img
+					<a href="ProDescription/${product.proid}" class="Thumbnail"> <img
 						src="<c:url value="/resources/productImg/${product.proid}.jpg"/>" /></a>
 					<div class="caption">
 						<h4>${product.proname}</h4>

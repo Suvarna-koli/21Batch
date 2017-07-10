@@ -14,7 +14,7 @@
 					<table id="productTable" class="table table-bordered">
 
 						<tr bgcolor="">
-							<center>Product Description</center>
+							<center><h2><b>Product Description</b></h2></center>
 						</tr>
 						<tr>
 							<td><img
@@ -46,8 +46,8 @@
 						</tr>
 						<tr>
 							<td>
-								<form action="<c:url value="/addToCart/${proInfo.proid}"/>" method="get">
-									<input type="text" name="quantity" class="form-control btn-block">
+								<form action="<c:url value="/addToCart/${proInfo.proid}"/>">Quantity
+									<input type="text" name="quantity" onclick="myFunction" class="form-control btn-block"/>
 									 <input type="submit" value="addToCart"/>
 								</form>
 							</td>

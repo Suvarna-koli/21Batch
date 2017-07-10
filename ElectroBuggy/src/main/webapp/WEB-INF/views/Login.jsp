@@ -46,8 +46,8 @@ img.avatar {
 
 </style>
  
-<jsp:include page="Navbar.jsp"></jsp:include>
- 
+<%-- <jsp:include page="Navbar.jsp"></jsp:include>
+  --%>
 <body background="resources/img/bg2.jpg">
 
 
@@ -66,7 +66,7 @@ img.avatar {
 				placeholder="Enter Username" name="username" required><br>
 
 			<label><span class="glyphicons glyphicons-lock"></span><b>Password</b></label> <input type="password"
-				placeholder="Enter Password" name="password" required><br>
+				placeholder="Enter Password" name="password" minlength="4" maxlength="10"  onkeyup="checkPass();" required><br>
 
 			<button type="submit" value="SUBMIT">Login</button>
 
