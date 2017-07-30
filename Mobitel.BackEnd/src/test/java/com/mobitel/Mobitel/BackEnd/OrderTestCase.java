@@ -25,6 +25,7 @@ public class OrderTestCase
 		
 		//order.setOrderid(1);
 		order.setUsername("radha");
+		order.setCartid(1);
 		order.setPaymode("CC");
 		order.setStatus("N");
 		order.setShipmentaddress("pune");

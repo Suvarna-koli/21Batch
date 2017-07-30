@@ -34,7 +34,7 @@ public class SupplierController
 		return "Supplier";
 	}
 	
-	@RequestMapping(value="/AddSupplier")
+	@RequestMapping(value="/AddSupplier",method=RequestMethod.POST)
 	public String addSupplier(@RequestParam("supname") String supname,@RequestParam("supaddr") String supaddr,Model m)
 	{
 		System.out.println("---Add Supplier Starting-----");
@@ -48,41 +48,41 @@ public class SupplierController
 		supplierDAO.insertUpdateSupplier(supplier);
 		
 		List<Supplier> list=supplierDAO.getSupplierDetails();
-		m.addAttribute("catdetail",list);
+		m.addAttribute("supdetail",list);
 		
 		boolean flag=false;
 		m.addAttribute("flag",flag);
 		
 		System.out.println("---Supplier Added----");
-		return "Supplier";
+		return "redirect:/Supplier";
 	}
 	
-	@RequestMapping(value="/deleteSupplier/{Supid}")
-	public String deleteSupplier(@PathVariable("Supid") int Supid,Model m)
+	@RequestMapping(value="/deleteSupplier/{supid}")
+	public String deleteSupplier(@PathVariable("supid") int supid,Model m)
 	{
 		System.out.println("---Supplier Deleted----");
-		Supplier supplier=supplierDAO.getSupplier(Supid);
+		Supplier supplier=supplierDAO.getSupplier(supid);
 		supplierDAO.deleteSupplier(supplier);
 		
 		List<Supplier> list=supplierDAO.getSupplierDetails();
-		m.addAttribute("catdetail",list);
+		m.addAttribute("supdetail",list);
 		
 		boolean flag=false;
 		m.addAttribute("flag",flag);
 		
-		return "Supplier";
+		return "redirect:/Supplier";
 	}
 	
-	@RequestMapping(value="/updateSupplier/{Supid}")
-	public String getUpdateSupplier(@PathVariable("Supid") int Supid,Model m)
+	@RequestMapping(value="/updateSupplier/{supid}")
+	public String getUpdateSupplier(@PathVariable("supid") int supid,Model m)
 	{
 		System.out.println("--- Getting Supplier Object to be Updated ---");
 		
-		Supplier supplier=supplierDAO.getSupplier(Supid);
+		Supplier supplier=supplierDAO.getSupplier(supid);
 		m.addAttribute("supplier",supplier);
 		
 		List<Supplier> list=supplierDAO.getSupplierDetails();
-		m.addAttribute("catdetail",list);
+		m.addAttribute("supdetail",list);
 		
 		boolean flag=true;
 		m.addAttribute("flag",flag);
@@ -91,24 +91,24 @@ public class SupplierController
 	}
 	
 	@RequestMapping(value="/UpdateSupplier",method=RequestMethod.POST)
-	public String updateSupplier(@RequestParam("Supid") int Supid,@RequestParam("supname") String supname,@RequestParam("supaddr") String supaddr,Model m)
+	public String updateSupplier(@RequestParam("supid") int supid,@RequestParam("supname") String supname,@RequestParam("supaddr") String supaddr,Model m)
 	{
 		System.out.println("--Updating the Supplier----");
 
 		Supplier supplier=new Supplier();
-		supplier.setSupid(Supid);
+		supplier.setSupid(supid);
 		supplier.setSupname(supname);
 		supplier.setSupaddr(supaddr);
 		
 		supplierDAO.insertUpdateSupplier(supplier);
 		
 		List<Supplier> list=supplierDAO.getSupplierDetails();
-		m.addAttribute("catdetail",list);
+		m.addAttribute("supdetail",list);
 		
 		boolean flag=false;
 		m.addAttribute("flag",flag);
 		
-		return "Supplier";
+		return "redirect:/Supplier";
 	}
 	
 	

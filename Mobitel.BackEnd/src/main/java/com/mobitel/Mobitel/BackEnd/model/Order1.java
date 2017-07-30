@@ -1,5 +1,7 @@
 package com.mobitel.Mobitel.BackEnd.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,13 +10,32 @@ import javax.persistence.Table;
 @Entity
 @Table
 
-public class Order1 {
+public class Order1 implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private int orderid;
 
+	int grandtotal;
+	int cartid;
+
+	public int getCartid() {
+		return cartid;
+	}
+
+	public void setCartid(int cartid) {
+		this.cartid = cartid;
+	}
+
 	private String username, paymode, shipmentaddress, status;
+
+	public int getGrandtotal() {
+		return grandtotal;
+	}
+
+	public void setGrandtotal(int grandtotal) {
+		this.grandtotal = grandtotal;
+	}
 
 	public int getOrderid() {
 		return orderid;
@@ -55,6 +76,5 @@ public class Order1 {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 
 }

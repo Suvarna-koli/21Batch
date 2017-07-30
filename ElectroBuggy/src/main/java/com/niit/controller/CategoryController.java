@@ -2,6 +2,7 @@ package com.niit.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,8 @@ import com.mobitel.Mobitel.BackEnd.model.*;
 public class CategoryController 
 {
 	
-	
+	@Autowired
+	ProductDAO productDAO;
 	@Autowired
 	CategoryDAO categoryDAO;
 	@RequestMapping("/Category")
@@ -35,10 +37,9 @@ public class CategoryController
 	}
 	
 	@RequestMapping(value="/AddCategory",method=RequestMethod.POST)
-	public String addCategory(@RequestParam("catname") String catname,@RequestParam("catdesc") String catdesc,Model m)
+	public String addCategory(@RequestParam("catname") String catname,@RequestParam("catdesc") String catdesc,Model m,HttpSession session)
 	{
 		System.out.println("---Add Category Starting-----");
-		
 		System.out.println(catname+":::"+catdesc);
 		
 		Category category=new Category();
@@ -52,25 +53,45 @@ public class CategoryController
 		
 		boolean flag=false;
 		m.addAttribute("flag",flag);
-		
+
 		System.out.println("---Category Added----");
-		return "Category";
+		return "redirect:/Category";
 	}
 	
 	@RequestMapping(value="/deleteCategory/{catid}")
 	public String deleteCategory(@PathVariable("catid") int catid,Model m)
 	{
 		System.out.println("---Category Deleted----");
+		boolean flag1=true;
 		Category category=categoryDAO.getCategory(catid);
+		List<Product>list1=productDAO.getProductDetailsByCatId(catid);
+		for(Product product:list1)
+		if(productDAO.checkproductid(product.getProid()))
+		{
+			flag1=true;
+		}
+		else
+		{
+			flag1=false;
+		}
+		if(flag1)
+		{
 		categoryDAO.deleteCategory(category);
-		
+		}
+		else
+		{
+			System.out.println("Can not delete the category");
+			m.addAttribute("flag1",flag1);
+		}
+		Category category1=new Category();
+		m.addAttribute("category", category1);
 		List<Category> list=categoryDAO.getCategoryDetails();
 		m.addAttribute("catdetail",list);
 		
 		boolean flag=false;
 		m.addAttribute("flag",flag);
 		
-		return "Category";
+		return "redirect:/Category";
 	}
 	
 	@RequestMapping(value="/updateCategory/{catid}")
@@ -86,9 +107,11 @@ public class CategoryController
 		
 		boolean flag=true;
 		m.addAttribute("flag",flag);
-		
-		return "Category";
+
+	//categoryDAO.insertUpdateCategory(category);
+		return "/Category";
 	}
+	
 	
 	@RequestMapping(value="/UpdateCategory",method=RequestMethod.POST)
 	public String updateCategory(@RequestParam("catid") int catid,@RequestParam("catname") String catname,@RequestParam("catdesc") String catdesc,Model m)
@@ -108,7 +131,7 @@ public class CategoryController
 		boolean flag=false;
 		m.addAttribute("flag",flag);
 		
-		return "Category";
+		return "redirect:/Category";
 	}
 	
 	

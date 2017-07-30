@@ -2,6 +2,8 @@ package com.mobitel.Mobitel.BackEnd.model;
 
 
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,7 +12,7 @@ import javax.persistence.Transient;
 
 @Table
 @Entity
-public class Product<MultipartFile>  {
+public class Product<MultipartFile> implements Serializable  {
 	
 	
 	@Id
@@ -18,15 +20,17 @@ public class Product<MultipartFile>  {
 	int proid;
 	int catid,supid,price,quantity;
 	String proname,prodesc,imgpath;
+
+	transient MultipartFile pimg;
 	
-	public String getImgpath() {
+	 
+	 public String getImgpath() {
 		return imgpath;
 	}
 	public void setImgpath(String imgpath) {
 		this.imgpath = imgpath;
 	}
-	@Transient
-	 MultipartFile pimg;
+	
 	public MultipartFile getPimg() {
 		return pimg;
 	}

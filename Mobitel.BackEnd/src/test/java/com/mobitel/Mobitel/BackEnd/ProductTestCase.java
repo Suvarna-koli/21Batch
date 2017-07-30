@@ -21,14 +21,12 @@ public class ProductTestCase {
 		
 		Product product = new Product();
 
-		product.setProname("Fastrack NG9463AL07");
-		product.setProdesc("Water Resistant (50 m),"
-				+ "Display Type: Analog,"
-				+ "Strap: Blue, Canvas and leather");
+		product.setProname("Golden Bell 381GB");
+		product.setProdesc("Golden Bell Watches have long been defined by their ability to keep unfailingly accurate time.Being easily Affordable to make it sit right on your wrist.");
 		product.setPrice(1635);
-		product.setQuantity(2);
-	product.setSupid(1);
-		product.setCatid(1);
+		product.setQuantity(50);
+	product.setSupid(3);
+		product.setCatid(2);
 		productDAO.insertUpdateProduct(product);
 		System.out.println("Product Inserted");
 

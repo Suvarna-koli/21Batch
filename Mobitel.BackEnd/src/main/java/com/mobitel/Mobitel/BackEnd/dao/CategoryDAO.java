@@ -36,6 +36,14 @@ public class CategoryDAO
 		session.close();
 		return category;
 	}
+	public String getCatByName(String catname)
+	{
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("from Category");
+		List<Category> list=query.list();
+		session.close();
+		return "list";
+	}
 	
 	@Transactional
 	public void deleteCategory(Category category)

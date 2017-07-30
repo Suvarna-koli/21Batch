@@ -1,20 +1,24 @@
-<!-- <html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
 <head>
-<title> Navbar Example </title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="resources/css/bootstrap.min.css">
- <script src="resources/js/bootstrap.min.js"></script>
- <script src="resources/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
 
-Starting the Navbar Code
+	<c:if test="${sessionScope.loggedIn}">
 
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 	
 	<div class="navbar-header">
-      	<a class="navbar-brand" href="#">E-Kart</a>
+      	<a class="navbar-brand" href="AboutUs">E-Kart</a>
     	</div>	
 	 <ul class="nav navbar-nav">
       		<li class="active"><a href="Home">Home</a></li>
@@ -24,19 +28,36 @@ Starting the Navbar Code
 
     	</ul>
 
-
-	  <div class="nav navbar-nav navbar-right">
-		<a href="Login">Log In</a>
-		<a href="Registration">Sign Up</a>
-	
-		<a href="Home">Back to Home</a>
-	
-	  </div>
+      <ul class="nav navbar-nav nav navbar-right">
+					<li><a href="#">${sessionScope.username}</a></li>
+     
+     <li><a href="Login">logout</a></li>
+     <li><a href="Cart">CartPage</a></li>
+     </ul>
 
 	</div>
 </nav>
+</c:if>
 
-Ending the NavBar Code
+<c:if test="${!sessionScope.loggedIn}">
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+	
+	<div class="navbar-header">
+      	<a class="navbar-brand" href="#">E-Kart</a>
+    	</div>	
+	 <ul class="nav navbar-nav">
+      		<li><a href="User">Home</a></li>
+      		<li><a href="ContactUs">ContactUs</a></li>
+      		<li><a href="Registration">Sign Up</a></li>
+
+
+    	</ul>
+</div>
+</nav>
+</c:if>
+
 
 </body>
 </html>
@@ -48,4 +69,3 @@ Ending the NavBar Code
 
 
 
- -->

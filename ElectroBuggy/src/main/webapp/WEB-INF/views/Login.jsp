@@ -1,6 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-<style>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+</head>
+ <style>
 
 
 input[type=text], input[type=password] {
@@ -27,7 +37,7 @@ button {
  */
 .cancelbtn {
 	width: auto;
-	padding: 10px 18px;
+	padding: 14px 20px;
 	background-color: #f44336;
 }
 
@@ -38,20 +48,38 @@ button {
 
 img.avatar {
 
-	width: 40%;
+	w"F:/css/bg2.jpg"idth: 40%;
 	border-radius: 50%;
 } */
 
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+body {
+    background-color: #bfbfbf;
+        font-family: "Times New Roman", Times, serif;
+       
+background-image:
+repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+background-size: 70px 120px;
+}
 
 
 </style>
  
-<%-- <jsp:include page="Navbar.jsp"></jsp:include>
-  --%>
-<body background="resources/img/bg2.jpg">
+ <jsp:include page="Navbar.jsp"></jsp:include>
+ 
+<body>
 
-
-	<h2><center>Login Form</center></h2>
 
 	<form action="perform_login" method="post">
 	 <!-- <form action="login" method="post">  -->
@@ -62,22 +90,40 @@ img.avatar {
 		</div>
  -->
 		<div class="container">
-			<label><span class="glyphicons glyphicons-user"></span><b>Username</b></label><input type="text"
-				placeholder="Enter Username" name="username" required><br>
 
-			<label><span class="glyphicons glyphicons-lock"></span><b>Password</b></label> <input type="password"
+ 		
+	<label><h2><font color="#800000" face="Monotype Corsiva" size="10" >Login Form</font></h2>
+		</label>
+		<br>
+			<label><span class="glyphicons glyphicons-user"></span><b>Username</b></label>
+			<input type="text"
+				placeholder="Enter Username" name="username" required><br>
+			<label><b>Password</b></label>
+			<span class="glyphicons glyphicons-lock"></span> <input type="password"
 				placeholder="Enter Password" name="password" minlength="4" maxlength="10"  onkeyup="checkPass();" required><br>
 
+			&nbsp;&nbsp;&nbsp;&nbsp;
 			<button type="submit" value="SUBMIT">Login</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+			
 
 			<button type="button" class="cancelbtn">Cancel</button>
 		<input type="checkbox" checked="checked"> Remember me
   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	
 		</div>
+		<u><a href="Registration">New to Electro-Buggy?? Sign up</a></u>
 
 		<div class="container" style="background-color:">
-			<span class="psw">Forgot <a href="#">password?</a></span>
+			<span class="psw">Forgot <a href="getPassword.jsp">password?</a></span>
 		</div>
+		<div class="text-center" style="color: red">${errorLoginMessage}</div><br/>
+	
+	
+	
+	
+	
+	
 	</form>
 
 </body>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+ 
+	<!-- Executed when webFlow is triggered -->
+	<!-- <on-start>
+	demohandler is java class available through annotated Demohandler.java class.here we are calling it’s initFlow() method.
+	  <evaluate expression="orderHandler.orderConfirm()" result="flowScope.cartlist" result-type="java.io.Serializable"></evaluate>
+	</on-start> -->
+	
+	<on-start>
+	<evaluate expression="orderHandler.orderConfirm(flowRequestContext)"/>
+	</on-start>
+	
+	 <!-- if not specified the first view state is the starting state -->
+	<view-state id="start" view="OrderPage" model="Cart">
+	    <transition on="submit" to="payment"/> 
+	</view-state>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</flow>

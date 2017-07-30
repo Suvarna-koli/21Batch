@@ -3,6 +3,8 @@ package com.niit.controller;
 import java.util.List;
 
 
+
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,59 +24,36 @@ public class OrderController {
 	@Autowired
 	OrderDAO orderDAO;
 
-	@RequestMapping("/CheckOut")
-	public String orderConfirm(HttpSession session,Model m)
-	{
-		String username=(String)session.getAttribute("username");
-		List<Cart> list=cartDAO.getCartItems(username);
-		 
-		int grandtotal=0;
-		for(Cart cart:list)
-		{
-			grandtotal=grandtotal+(cart.getQuantity()*cart.getPrice());
-			
-		}
-		m.addAttribute("grandtotal", grandtotal);
-		m.addAttribute("cartlist", list);
-		return "CheckOut";
-	}
-	/*@RequestMapping("/pay")
-	public String Confirmation(Model m,HttpSession session)
-	{
-		String username=(String) session.getAttribute("username");
-		List<Orders> orderlist=ordersDAO.getOrdersDetails(username);
-		
-		m.addAttribute("orderlist",orderlist);
-		
-		
-		return "ThankPage";
-	}
+
 	
-	*/
-	@RequestMapping("/payment")
-	public String payment(@RequestParam("paymode") String paymode,@RequestParam("shipping") String shipping,Model m,HttpSession session)
+	@RequestMapping(value="/payment")
+	public String payment(@RequestParam("paymode") String paymode,@RequestParam("grandtotal") int grandtotal,@RequestParam("shipmentaddress") String shipmentaddress,Model m,HttpSession session)
 	{
 		
 		String username=(String) session.getAttribute("username");
 		Order1 order=new Order1();
 		order.setPaymode(paymode);
-		order.setShipmentaddress(shipping);
+		order.setShipmentaddress(shipmentaddress);
 		order.setUsername(username);
 		order.setStatus("Y");
+		order.setGrandtotal(grandtotal);
+		System.out.println(order.getGrandtotal());
 		orderDAO.insertUpdateOrder(order);	
 		
 		
 		List<Cart> cartlist=cartDAO.getCartDetails(username);
-		for(Cart cart:cartlist)
+		m.addAttribute("cartlist", cartlist);
+		
+		List<Order1> ordlist=orderDAO.getOrderDetails(username);
+		m.addAttribute("orderlist", ordlist);
+		List<Cart>  list2=cartDAO.getCartDetails(username);
+		for(Cart cart:list2)
 		{
-			 cart=cartDAO.getCartItem(cart.getCartItemid());
-			cart.setStatus("y");
-			cartDAO.addToCart(cart);
-			
+			cartDAO.deleteCartItem(cart);
 		}
 		
 		
-		return "redirect:/pay";
+		return "payment";
 		
 	}
 	

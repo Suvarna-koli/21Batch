@@ -3,6 +3,7 @@ package com.mobitel.Mobitel.BackEnd.dao;
 import java.util.List;
 
 
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -11,7 +12,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mobitel.Mobitel.BackEnd.model.*;
+import com.mobitel.Mobitel.BackEnd.model.Order1;
 
 @Repository("orderDAO")
 
@@ -52,7 +53,7 @@ public class OrderDAO {
 	public List<Order1> getOrderDetails(String username)
 	{
 		Session session=sessionFactory.openSession();
-		Query query=session.createQuery("from Order  where username=:username");
+		Query query=session.createQuery("from Order1  where username=:username");
 		query.setParameter("username", username);
 		@SuppressWarnings("unchecked")
 		List<Order1> list=query.list();

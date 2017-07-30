@@ -9,21 +9,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
 	@RequestMapping("/")
-	public String GotoHome() {
+	public String GotoHome(HttpSession session) {
+
+		boolean loggedin=false;
+		session.setAttribute("loggedin",loggedin);
+		System.out.println("Loggedin");
+		
 		return "Home";
 	}
 
 	@RequestMapping("/Home")
-	public String gotoHome(HttpSession session) {
-session.setAttribute("loggedin", true);
-System.out.println("Loggedin");
+	public String gotoHome() {
+		
+		
 		return "Home";
 	}
 	@RequestMapping("/Login")
 	public String GotoLoginPage() {
 		return "Login";
 	}
-	
+	/*@RequestMapping("/LogOut")
+	public String GotoLogoutPage() {
+		return "Login";
+	}*/
+	@RequestMapping("/ThankPage")
+	public String GotoThankPage() {
+		return "ThankPage";
+	}
 
 	@RequestMapping("/Success")
 	public String GotoLoginSuccessPage() {
@@ -33,6 +45,11 @@ System.out.println("Loggedin");
 	@RequestMapping("/ContactUs")
 	public String GotoContactPage() {
 		return "ContactUs";
+	}
+	
+	@RequestMapping("/AboutUs")
+	public String GotoAboutPage() {
+		return "AboutUs";
 	}
 
 	@RequestMapping("/Footer")

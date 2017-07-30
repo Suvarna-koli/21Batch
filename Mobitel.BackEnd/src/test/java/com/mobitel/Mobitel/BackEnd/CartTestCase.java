@@ -25,11 +25,11 @@ public class CartTestCase {
 
 		
 		cart.setCartid(1001);
-		cart.setProid(2);
+		cart.setProid(1);
 		cart.setProname("Fastrack NG9463AL07");
 		cart.setPrice(1635);
 		cart.setQuantity(2);
-		cart.setStatus("N");
+		cart.setStatus("Y");
 		cart.setUsername("radha");
 
 		

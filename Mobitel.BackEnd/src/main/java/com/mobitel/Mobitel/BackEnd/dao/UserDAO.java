@@ -2,6 +2,7 @@ package com.mobitel.Mobitel.BackEnd.dao;
 
 import java.util.List;
 
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -10,7 +11,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mobitel.Mobitel.BackEnd.model.User;
 import com.mobitel.Mobitel.BackEnd.model.User;
 
 

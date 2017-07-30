@@ -1,9 +1,12 @@
 package com.niit.controller;
 import java.io.BufferedOutputStream;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +38,30 @@ public class ProductController
 	@Autowired
 	SupplierDAO supplierDAO;
 
-	
+	@RequestMapping(value="/ProductPage")
+	public String gotoDisplayPage(Model m)
+	{
+		List<Product> prolist=productDAO.getProductDetails();
+		m.addAttribute("prolist",prolist);
+		return "/ProductPage";
+	}
+	@RequestMapping(value="/ProDescription/{proid}")
+	public String gotoDescriptionPage(@PathVariable("proid")int proid,Model m)
+	{
+		Product product=productDAO.getProduct(proid);
+		m.addAttribute("proInfo", product);
+		return "ProDescription";
+	}
+	@RequestMapping(value="/CategoryWise/{catid}")
+	public String gotoCatWisePage(@PathVariable("catid")int catid,Model m)
+	{
+		List<Product> product=productDAO.getProductDetailsByCatId(catid);
+		m.addAttribute("prolist", product);
+		
+		List<Category> category=categoryDAO.getCategoryDetails();
+		m.addAttribute("catlist",category);
+		return "CategoryWise";
+	}
 	
 	@RequestMapping(value="/Product")
 	public String showProduct(Model m)
@@ -43,11 +69,9 @@ public class ProductController
 		
 		
 		Product product=new Product();
-		
+		m.addAttribute("product", product);
 		m.addAttribute("catlist",this.getCatList());
 		m.addAttribute("suplist",this.getSupList());
-		
-		m.addAttribute("product",product);
 		
 		List<Product> prodlist=productDAO.getProductDetails();
 		m.addAttribute("prodlist",prodlist);
@@ -59,19 +83,27 @@ public class ProductController
 		return "Product";
 	}
 		
-	@RequestMapping(value="/AddProduct")
+	@RequestMapping(value="/AddProduct",method=RequestMethod.POST)
 	public String insertProduct(@ModelAttribute("product") Product product,Model m,
-			@RequestParam("pimg") MultipartFile filedet,BindingResult result)
+			@RequestParam("pimg") MultipartFile filedet)
 	{
+	 System.out.println("In Add function");
 		
 	System.out.println("Image uploading...");
+
+	
 		String path="F:\\ShriniwasBatch\\ElectroBuggy\\src\\main\\webapp\\resources\\productImg\\";
-		
+	
 		String idpath=productDAO.getProdcutId()+".jpg";
+		
+		System.out.println(productDAO.getProdcutId());
+		
 		String fileinfo=path+idpath;
+		
 		System.out.println("---Product Inserted---");
 		
 		File f=new File(fileinfo);
+	
 		if(!filedet.isEmpty())
 		{
 			try {
@@ -89,31 +121,25 @@ public class ProductController
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+			}
+
 			
-		
-		else
-		{
-			System.out.println("File is empty...please a select the file");
-		}
 		List<Product> prodlist=productDAO.getProductDetails();
 		m.addAttribute("prodlist",prodlist);
 		
 		boolean flag=false;
 		m.addAttribute("flag",flag);
+		System.out.println("Product uploaded");
 		
 		return "redirect:/Product";
 	}
 	
-		
 	
-	
-	
-	@RequestMapping(value="/updateProduct/{prodid}")
-	public String updateProduct(@PathVariable("prodid")int prodid,Model m)
+	@RequestMapping(value="/updateProduct/{proid}")
+	public String updateProduct(@PathVariable("proid")int proid,Model m)
 	{
 		
-		Product product=productDAO.getProduct(prodid);
+		Product product=productDAO.getProduct(proid);
 		m.addAttribute("product",product);
 		m.addAttribute("catlist",this.getCatList());
 		m.addAttribute("suplist",this.getSupList());
@@ -124,33 +150,33 @@ public class ProductController
 		m.addAttribute("flag",flag);
 		
 		
-		return "redirect:/Product";
+		return "Product";
 	}
 	@RequestMapping(value="/UpdateProduct",method=RequestMethod.POST)
-	public String updateProduct(@RequestParam("proid") int proid,@RequestParam("proname") String proname,@RequestParam("prodesc") String prodesc,Model m)
+	public String updateProduct(@ModelAttribute("product") Product product,Model m)
 	{
 		System.out.println("--Updating the Product----");
-
-		Product product=new Product();
-		product.setProid(proid);
-	product.setProname(proname);
-	product.setProdesc(prodesc);
 		productDAO.insertUpdateProduct(product);
 		
-		List<Product> list=productDAO.getProductDetails();
-		m.addAttribute("prodetail",list);
+		m.addAttribute("product",new Product().getProid());
+		m.addAttribute("catlist",this.getCatList());
+		m.addAttribute("suplist",this.getSupList());
 		
+		List<Product> prodlist=productDAO.getProductDetails();
+		m.addAttribute("prodlist",prodlist);
 		boolean flag=false;
 		m.addAttribute("flag",flag);
 		
-		return "Product";
+		
+		return "redirect:/Product";
+		
 	}
 	
-	@RequestMapping(value="/deleteProduct/{prodid}")
-	public String deleteProduct(@PathVariable("prodid")int prodid,Model m)
+	@RequestMapping(value="/deleteProduct/{proid}")
+	public String deleteProduct(@PathVariable("proid")int proid,Model m)
 	{
 		
-		Product product=productDAO.getProduct(prodid);
+		Product product=productDAO.getProduct(proid);
 		productDAO.deleteProduct(product);
 		
 		Product product1=new Product();
@@ -164,7 +190,7 @@ public class ProductController
 		m.addAttribute("flag",flag);
 		
 		
-		return "Product";
+		return "redirect:/Product";
 	}
 	
 	public LinkedHashMap<Integer,String> getCatList()
@@ -195,20 +221,7 @@ public class ProductController
 		return suplist;
 	}
 	
-	@RequestMapping(value="/ProductPage")
-	public String gotoDisplayPage(Model m)
-	{
-		List<Product> prolist=productDAO.getProductDetails();
-		m.addAttribute("prolist",prolist);
-		return "ProductPage";
-	}
-	@RequestMapping(value="/ProDescription/{proid}")
-	public String gotoDescriptionPage(@PathVariable("proid")int proid,Model m)
-	{
-		Product product=productDAO.getProduct(proid);
-		m.addAttribute("proInfo", product);
-		return "ProDescription";
-	}
+	
 	
 	
 	

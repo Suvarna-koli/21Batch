@@ -38,7 +38,7 @@ input[type=submit]:hover {
  
 <body>
 
-<h3>Contact Form</h3>
+<h3><font color="#800000" face="Monotype Corsiva" size="7" >Contact Form</font></h3>
 
 <div class="container">
   <form action="ContactUs" method="POST">

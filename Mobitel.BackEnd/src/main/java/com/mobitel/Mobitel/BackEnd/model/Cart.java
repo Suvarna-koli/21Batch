@@ -1,5 +1,6 @@
 package com.mobitel.Mobitel.BackEnd.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Cart {
+public class Cart implements Serializable {
 	@Id
 	@GeneratedValue
 	int cartItemid;
@@ -21,6 +22,8 @@ public class Cart {
 	int price;
 	int quantity;
 	String proname,status,username;
+	
+	@GeneratedValue
 	Date date;
 	public int getCartItemid() {
 		return cartItemid;
